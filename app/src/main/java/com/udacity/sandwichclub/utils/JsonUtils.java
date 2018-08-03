@@ -19,18 +19,18 @@ public class JsonUtils {
             //Get sandwich Name JSON Object
             JSONObject sandwichName = sandwichJSON.getJSONObject("name");
             //Get sandwich mainName
-            String mainName = sandwichName.getString("mainName");
+            String mainName = sandwichName.optString("mainName");
             //Get sandwich other names
             List<String>  otherNames = jsonArrayList(sandwichName.getJSONArray("alsoKnownAs"));
 
             //Get sandwich place of origin
-            String placeOfOrigin = sandwichJSON.getString("placeOfOrigin");
+            String placeOfOrigin = sandwichJSON.optString("placeOfOrigin");
 
             //Get sandwich description
-            String description = sandwichJSON.getString("description");
+            String description = sandwichJSON.optString("description");
 
             //Get sandwich image
-            String image = sandwichJSON.getString("image");
+            String image = sandwichJSON.optString("image");
 
             //Get sandwich ingredients
             List<String> ingredients = jsonArrayList(sandwichJSON.getJSONArray("ingredients"));
