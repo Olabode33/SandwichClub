@@ -12,16 +12,26 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
     private Sandwich mSandwich;
 
+    //Initial views
+    @BindView(R.id.origin_tv) TextView tv_origin;
+    @BindView(R.id.also_known_tv) TextView tv_otherNames;
+    @BindView(R.id.ingredients_tv) TextView tv_ingredents;
+    @BindView(R.id.description_tv) TextView tv_description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -62,12 +72,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI() {
-        //Initial views
-        TextView tv_origin = findViewById(R.id.origin_tv);
-        TextView tv_otherNames = findViewById(R.id.also_known_tv);
-        TextView tv_ingredents = findViewById(R.id.ingredients_tv);
-        TextView tv_description = findViewById(R.id.description_tv);
-
         //Build string from array
         String otherNames = TextUtils.join(", ", mSandwich.getAlsoKnownAs());
         String ingredents = TextUtils.join(", ", mSandwich.getIngredients());
